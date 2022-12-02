@@ -10,6 +10,6 @@ export const addToCart =(product)=>{
 export const removeItem=(product)=>{
    return{
       type: REMOVE_ITEM,
-      payload: product.name
+      payload: product
    }
 }
