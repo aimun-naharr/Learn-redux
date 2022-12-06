@@ -6,3 +6,4 @@ export const REMOVE_ITEM = "REMOVE_ITEM";
 
 export const TOGGLE_BRAND='TOGGLE_BRAND'
 export const TOGGLE_STOCK='TOGGLE_STOCK'
+export const  SEARCH_KEYWORD='SEARCH_KEYWORD'

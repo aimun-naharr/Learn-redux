@@ -6,7 +6,12 @@ import { toggleBrand, toggleStock } from "../redux/actionCreators.jsx/productAct
 
 const Home = () => {
   const [products, setProducts]=useState([])
-  const {brand, stock}= useSelector(state=>state.filter.filters)
+  const state= useSelector(state=>state.filter)
+  const brand=state.filters.brand
+  const stock=state.filters.stock
+  const keyword=state.keywords
+  console.log(keyword)
+  
   
   const dispatch=useDispatch()
   useEffect(()=>{
@@ -21,8 +26,22 @@ const Home = () => {
       <ProductCard key={product.model} product={product} />
     ))
   }
-  if(products.length && stock ){
-    content=products.filter(product=>product.status===true).map((product) => (
+  if(products.length && (stock || brand.length || keyword) ){
+    content=products.filter(product=>{
+      if(stock){
+        return product.status ===true
+      }
+      else return product
+    }).filter(product=>{
+      if(brand.length){
+        return brand.includes(product.brand.toLowerCase())
+      }else return product
+    }).filter(product=>{
+      if(keyword){
+        return product.model.toLowerCase().includes(keyword)
+      }
+      else return product
+    }).map((product) => (
       <ProductCard key={product.model} product={product} />
     ))
   }

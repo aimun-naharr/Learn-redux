@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_ITEM, TOGGLE_BRAND, TOGGLE_STOCK } from "../actiontypes/productActions";
+import { ADD_TO_CART, REMOVE_ITEM, SEARCH_KEYWORD, TOGGLE_BRAND, TOGGLE_STOCK } from "../actiontypes/productActions";
 
 export const addToCart = (product) => {
         return {
@@ -26,3 +26,11 @@ export const toggleBrand = (brand) => {
 export const toggleStock = () => {
         return { type: TOGGLE_STOCK };
 };
+
+export const searchKeyword=(name)=>{
+        console.log(name)
+        return{
+                type: SEARCH_KEYWORD,
+                payload: name
+        }
+}
